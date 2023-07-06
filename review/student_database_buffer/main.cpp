@@ -1,32 +1,34 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
 int main(){
-    vector<string> name;
-    vector<int> id;
-    vector<double> gpa;
+    const unsigned int NUM_STUDENTS = 1000;
+    
+    string name[NUM_STUDENTS];
+    int id[NUM_STUDENTS];
+    double gpa[NUM_STUDENTS];
+    
+    unsigned int total_students = 0;
     
     int i = 0;
     while(true){
-        string temp;
         cout << "Enter the student's name (or enter 'q' to quit): " << endl;
-        getline(cin, temp);
+        getline(cin, name[i]);
         
-        if(temp == "q"){
+        if(name[i] == "q"){
             break;
         }
         
-        name.push_back(temp);
+        total_students++;
         
         double total = 0.0;
         double userInput = 0.0;
         double numGrades = 0.0;
         while(userInput >= 0.0){
             cout << "Enter the student's grade (enter -1 to quit): " << endl;
-            
+            string temp;
             getline(cin, temp);
             userInput = stod(temp);
             if(userInput >= 0.0){
@@ -34,13 +36,13 @@ int main(){
                 numGrades++;
             }
         }
-        gpa.push_back(total / numGrades);
-        id.push_back(i);
+        gpa[i] = total / numGrades;
+        id[i] = i;
         i++;
     }
     
-    for(int i = 0; i < name.size(); i++){
-        cout << "Student Name: " << name.at(i) << endl;
+    for(int i = 0; i < total_students; i++){
+        cout << "Student Name: " << name[i] << endl;
         cout << "Student ID: " << id[i] << endl;
         cout << "GPA: " << gpa[i] << endl;
     }
