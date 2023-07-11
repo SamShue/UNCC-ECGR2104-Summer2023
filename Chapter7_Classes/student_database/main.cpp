@@ -37,7 +37,6 @@ class Student{
             id = -1;
             return;
         }
-            
         id = i;
     }
     
