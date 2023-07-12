@@ -1,7 +1,7 @@
 #include <iostream>
 #include "complex.h"
 
-using namespace std;
+using namespace myMath;
 
 int main(){
     Complex x(4.0, 2.0);

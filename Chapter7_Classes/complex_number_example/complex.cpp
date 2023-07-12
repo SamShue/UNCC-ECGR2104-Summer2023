@@ -1,5 +1,7 @@
 #include "complex.h"
 
+namespace myMath {
+
 Complex::Complex(){
     this->real = 0.0;
     this->imag = 0.0;
@@ -41,4 +43,6 @@ Complex Complex::operator-(const double& rhs){
 
 void Complex::print(){
     std::cout << real << " + " << imag << "i" << std::endl;
+}
+
 }

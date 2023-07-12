@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+namespace myMath {
+
 struct Complex {
     Complex();
     Complex(const double& real);
@@ -20,5 +22,7 @@ struct Complex {
     double real;
     double imag;
 };
+
+}
 
 #endif

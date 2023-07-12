@@ -9,7 +9,7 @@ class Student{
     public:
     Student(const string& n, const int& i){
         name = n;
-        gpa = 4.0;
+        gpa = DEFAULT_GPA;
         setId(i);
     }
     
@@ -19,12 +19,14 @@ class Student{
         setId(i);
     }
     
-    void computeGpa(double grades[], const unsigned int& numGrades){
+    static double computeGpa(double grades[], const unsigned int& numGrades) {
         double total = 0.0;
         for(int i = 0; i < numGrades; i++){
+            if(grades[i] < 0.0 || grades[i] > 4.0)
+                continue;
             total += grades[i];
         }
-        gpa = total/(double)numGrades;
+        return total/(double)numGrades;
     }
     
     // mutator / setter
@@ -48,6 +50,10 @@ class Student{
         gpa = g;
     }
     
+    void setGpa(double grades[], unsigned int size){
+        gpa = computeGpa(grades, size);
+    }
+    
     // accessor / getter
     double getGpa() const {
         return gpa;
@@ -61,13 +67,22 @@ class Student{
         return id;
     }
     
+    static double DEFAULT_GPA;
+    
     private:
     string name;
     int id;
     double gpa;
 };
 
+double Student::DEFAULT_GPA = 4.0;
+
 int main(){
+    double grades[] = {3.0, 2.0, 3.0, 4.0};
+    //Student s("Not an acutal student", 0);
+    double gpa = Student::computeGpa(grades, 4);
+    double gpa2 = Student::DEFAULT_GPA;
+    
     vector<Student> studentVector;
 
     studentVector.push_back(Student("Sam", 800387310, 2.8));
