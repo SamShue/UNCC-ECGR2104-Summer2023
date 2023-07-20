@@ -4,7 +4,7 @@
 using namespace std;
 
 void makesABigProblem(){
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(5);
     sll.push_back(7);
     sll.push_back(13);
@@ -12,7 +12,7 @@ void makesABigProblem(){
     
     sll.insert(1, 3);
     
-    SinglyLinkedList sll2 = sll;
+    SinglyLinkedList<int> sll2 = sll;
     sll2.at(0) = 123;
     
     cout << "List size: " << sll.size() << endl;
@@ -20,7 +20,7 @@ void makesABigProblem(){
     cout << sll.at(1) << endl;
     cout << sll.at(2) << endl;
     
-    SinglyLinkedList sll3;
+    SinglyLinkedList<int> sll3;
     sll3.push_back(15);
     sll3.push_back(71);
     
