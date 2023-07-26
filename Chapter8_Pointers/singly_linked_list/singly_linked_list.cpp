@@ -18,8 +18,10 @@ SinglyLinkedList::SinglyLinkedList(const SinglyLinkedList& rhs){
 
 SinglyLinkedList::~SinglyLinkedList(){
     cout << "Destructor called!" << endl;
-    while(size() > 0)
+    while(size() > 0){
         pop_back();
+        cout << "here" << endl;
+    }
 }
 
 void SinglyLinkedList::operator=(const SinglyLinkedList& rhs){
