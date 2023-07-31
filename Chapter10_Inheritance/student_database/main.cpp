@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -29,11 +30,7 @@ class Person {
         return id;
     }
     
-    string toString(){
-        stringstream ss;
-        ss << "Name: " << name << "\nID: " << id << endl;
-        return ss.str();
-    }
+    virtual string toString() = 0;
     
     protected:
     string name;
@@ -74,7 +71,7 @@ class Faculty : public Person {
         setSalary(salary);
     }
     
-    void setSalary(double gpa){
+    void setSalary(double salary){
         if(salary > 0.0){
             this->salary = salary;
         } else {
@@ -86,16 +83,25 @@ class Faculty : public Person {
         return salary;
     }
     
+    string toString(){
+        stringstream ss;
+        ss << "Name: " << name << "\nID: " << id << "\nSalary: " << salary << endl;
+        return ss.str();
+    }
+    
     private:
     double salary;
 };
 
 int main(){
-    Student s("Sam", 800387310, 2.7);
-    Faculty f("Jim", 800234123, 120000);
+    vector<Person*> database;
+    database.push_back(new Student("Sam", 800387310, 2.7));
+    database.push_back(new Faculty("Jim", 800234123, 120000));
+    //database.push_back(new Person("Jeremy", 800210321));
     
-    cout << s.toString() << endl;
-    cout << f.toString() << endl;
+    for(int i = 0; i < database.size(); i++){
+        cout << database.at(i)->toString() << endl;
+    }
     
     return 0;
 }
