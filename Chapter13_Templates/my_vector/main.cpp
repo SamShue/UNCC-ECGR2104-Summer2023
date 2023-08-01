@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -64,6 +65,9 @@ class MyVector{
     }
     
     T& at(int index) const{
+        if(index >= nextIndex){
+            throw out_of_range("Index out of range.");
+        }
         return a[index];
     }
     
@@ -99,6 +103,8 @@ void makesABigProblem(){
     
     MyVector<double> v4;
     v4.push_back(3.5);
+    
+    v4.at(200);
 }
 
 int main(){
